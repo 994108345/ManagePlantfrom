@@ -10,6 +10,7 @@ import com.manageplantfrom.entity.PHCSMP_Suspect;
 import com.manageplantfrom.service.SuspectService;
 import com.manageplantfrom.serviceImple.SuspectServiceImple;
 import com.manageplantfrom.utils.CompleteCheck;
+import com.whfstudio.test.reflectTest;
 
 public class PHCSMP_Suspect_Action extends BaseAction<PHCSMP_Suspect> {
 	
@@ -30,21 +31,26 @@ public class PHCSMP_Suspect_Action extends BaseAction<PHCSMP_Suspect> {
 			return "loginError";
 		}
 	}
-	//添加嫌疑人信息
+	/**
+	 * 添加嫌疑人信息，并设置相关字段
+	 * @return addSuspectInfor
+	 * @throws Exception
+	 */
 	public String addSuspectInfor() throws Exception{
 		//设置激活码为房间号
 //		model.setIs_Active((Integer)request.getSession().getAttribute("roomId"));
 		
-//		Class<?> c = Class.forName(PHCSMP_Suspect.class.getName());
-//		int count = CompleteCheck.IsEqualsNull(model, c);
-//		
-//		System.out.println("统计字段："+count);
+		Class<?> c = Class.forName(PHCSMP_Suspect.class.getName());
+		
+		int count = CompleteCheck.IsEqualsNull(model, c);
+		int fieldsNumber = CompleteCheck.getFieldsNumber(model, c);
+		
+		model.setFill_record(fieldsNumber-count-3);//设置已填写的字段数
+		model.setTotal_record(fieldsNumber-3);//设置应填写的字段
+		System.out.println("未填写的字段："+count);
+		System.out.println("总字段："+fieldsNumber);
 		/*第一个添加嫌疑人的信息直接设置已填写的字段即可*/
-//		model.setFill_record(count);
-		/*将录入的身份证号存入session中*/
-//		service.saveSuspectInfor(model);
-//		System.out.println(model.getSuspect_Name());
-		System.out.println("PHCSMP_Suspect_Action:addSuspectInfor"+model);
+		service.saveSuspectInfor(model);
 		return "addSuspectInfor";
 	}
 	//加载数据库的手环id信息

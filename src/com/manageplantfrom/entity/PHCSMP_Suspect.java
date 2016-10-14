@@ -23,17 +23,23 @@ public class PHCSMP_Suspect {
 	private String type_ID;//证件类型
 	private String identifyCard_Number;//证件号码
 	private String suspected_Cause;//进入办案区原因（案由字典表中ID用逗号分隔）
-	private String enter_Time;//进入办案区时间
+	private Date enter_Time;//进入办案区时间
 	private String staff_ID;//办案民警
 	private int is_Active;//是否激活（默认未激活0）
 	
 	private String tdentityID_Imag;//身份证照片的url
 	private String take_Picture;//现场拍摄照片的url
 	
-	private int total_record = 60;//需要填写的总记录数
+	private int total_record;//需要填写的总记录数
 	private int fill_record;//当前填写的记录数
 	
 	
+	public Date getEnter_Time() {
+		return enter_Time;
+	}
+	public void setEnter_Time(Date enter_Time) {
+		this.enter_Time = enter_Time;
+	}
 	public String getTdentityID_Imag() {
 		return tdentityID_Imag;
 	}
@@ -112,12 +118,6 @@ public class PHCSMP_Suspect {
 	}
 	public void setSuspected_Cause(String suspected_Cause) {
 		this.suspected_Cause = suspected_Cause;
-	}
-	public String getEnter_Time() {
-		return enter_Time;
-	}
-	public void setEnter_Time(String enter_Time) {
-		this.enter_Time = enter_Time;
 	}
 	public String getStaff_ID() {
 		return staff_ID;

@@ -31,7 +31,7 @@
         
         <!-- 设置total_record属性为默认值 -->
         <property name="total_record" type="java.lang.Integer"> 
-			<column name="total_record" not-null="true" default="60"/> 
+			<column name="total_record" not-null="true" default="20"/> 
 		</property>
         
         <property name="fill_record" type="java.lang.Integer"> 
