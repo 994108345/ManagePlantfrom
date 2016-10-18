@@ -1,5 +1,6 @@
 package com.manageplantfrom.serviceImple;
 
+import com.manageplantfrom.base.DaoSupportImpl;
 import com.manageplantfrom.dao.ActivityRecordDao;
 import com.manageplantfrom.daoImple.ActivityRecordDaoImple;
 import com.manageplantfrom.entity.PHCSMP_Activity_Record;
@@ -10,7 +11,7 @@ import com.manageplantfrom.service.ActivityRecordService;
  * @author wuhaifei
  * @d2016年8月16日
  */
-public class ActivityRecordServiceImple implements ActivityRecordService {
+public class ActivityRecordServiceImple extends DaoSupportImpl<PHCSMP_Activity_Record> implements ActivityRecordService {
 	private ActivityRecordDao dao = new ActivityRecordDaoImple();
 
 	@Override

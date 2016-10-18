@@ -27,9 +27,9 @@ public class CompleteCheck {
 		    field.setAccessible(true);
 			try {
 				
-				System.out.println(field.get(obj));
+				System.out.println(field.getName()+":"+field.get(obj));
 				
-				if(field.get(obj)==null){
+				if(field.get(obj)==null||field.get(obj).equals("")){
 					count++;
 				}
 			} catch (Exception e) {

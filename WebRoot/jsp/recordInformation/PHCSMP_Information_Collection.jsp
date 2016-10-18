@@ -24,24 +24,74 @@
 	
 <link rel="stylesheet" href="${pageContext.request.contextPath }/css/progress-bar.css" type="text/css">
 <script type="text/javascript">
-window.onload=function(){ 
-	var oDiv = document.getElementsByTagName('div')[0];
-	var oSpan = document.getElementsByTagName('span')[0];
-	var oP = document.getElementsByTagName('p')[0];
-	var num=10;
-	var time = 0;
-	var timer = null;
-	timer = setInterval(function(){
-
-		if(num < 60){ 
-			oSpan.style.width = oSpan.offsetWidth + 5 + 'px';
-			num = num + 1; 
-			oP.innerHTML = num -10+ '%';
-		}else{ 
-			clearInterval(timer);
+var count = 0;
+		var myArr = new Array();
+		//初始化数组myArr
+		for(var i=0;i<5;i++){
+			myArr[i] = 0;
 		}
-	},time);
-}
+		
+        function onMouseOut() {
+        	var isChange = false;
+            var collectedItem = document.getElementById("Collected_Item").value;
+            var Is_Checked = document.getElementById("Is_Checked").value;
+			var Is_Collected = document.getElementById("Is_Collected").value;
+			var Is_Storaged = document.getElementById("Is_Storaged").value;
+			var Room_ID = document.getElementById("Room_ID").value;
+			
+           if(collectedItem != "-----请选择-----"&&myArr[0] == 0){
+            console.log(collectedItem);
+                count = count+1;
+                myArr[0]=1;
+                isChange = true;
+            } 
+           
+           if(Is_Checked != ""&&myArr[1] == 0){
+            console.log("Is_Checked:"+Is_Checked);
+                count = count+1;
+                myArr[1]=1;
+                isChange = true;
+            }
+            if(Is_Collected != ""&&myArr[2] == 0){
+            console.log("Is_Collected"+Is_Collected);
+                count = count+1;
+                myArr[1]=1;
+                isChange = true;
+            }
+            if(Is_Storaged != ""&&myArr[3] == 0){
+            console.log("Is_Storaged"+Is_Storaged);
+                count = count+1;
+                myArr[1]=1;
+                isChange = true;
+            }
+            /* if(Room_ID != ""&&myArr[4] == 0){
+            console.log(Room_ID);
+                count = count+1;
+                myArr[1]=1;
+                isChange = true;
+            } */
+            //ischange为true
+            if(isChange){
+            	jindutiao(count*3);
+            }
+        }
+
+function jindutiao(coun) {
+          var oSpan = document.getElementsByClassName("spanText")[0];
+          var oP = document.getElementById("numPoint");
+          var num=0;
+          var time = 0;
+          var timer = null;
+          timer = setInterval(function(){
+              if(num < coun){
+                  oSpan.style.width = oSpan.offsetWidth + 6 + 'px';
+                  num = num + 1;
+                  oP.innerHTML = num + '%';
+              }else{
+                  clearInterval(timer);
+              }
+          },time);
+      }
 </script>
 		
 	
@@ -53,13 +103,9 @@ window.onload=function(){
 		<br><br>
 		<br><br>
 	</c:if>  
-	
+	<div class="title">信息采集记录</div>
 	<form action="${pageContext.request.contextPath }/IC_addInformationCollection.action" method="post">
 		<table  class="" cellspacing="0" cellpadding="0" bordercolor="#cbcbcb" border="1px">
-		  	
-		   <div class="title">
-		    信息采集
-		  </div>
 		  <tr>
 		    <td width="15%" rowspan="4"><div class="bigtouxiang"></div></td>
 		    <td width="12%" rowspan="4"><div class="touxiang"></div></td>
@@ -80,38 +126,38 @@ window.onload=function(){
 		  </tr>
 		   
 		  <tr>
-		    <td width="10%" style="text-align: center;">信息采集</td>
+		    <td width="10%" style="text-align: center;">是否对比检查</td>
 		    <td width="10%" style="text-align: center;">
-		    	<input type="radio" name="Is_Collected" value="radio"  />是
-		    	<input type="radio" name="Is_Collected" value="radio"/>否
+		    	<input type="radio" name="Is_Checked" id="Is_Checked" onblur="onMouseOut()" value="是"  />是
+		    	<input type="radio" name="Is_Checked" id="Is_Checked" onblur="onMouseOut()" value="否"/>否
 		    </td>
-		    <td width="10%" style="text-align: center;">采集项目</td>
+		    <td width="10%" style="text-align: center;">是否采集项目</td>
 		    <td width="10%" style="text-align: center;">
-		    	<input type="radio" name="Is_Checked" value="radio"  />是
-		    	<input type="radio" name="Is_Checked" value="radio"/>否
+		    	<input type="radio" name="Is_Collected" id="Is_Collected" onblur="onMouseOut()" value="是"  />是
+		    	<input type="radio" name="Is_Collected" id="Is_Collected" onblur="onMouseOut()" value="否"/>否
 		    </td>
 		    
 		  </tr>
 		  <tr>
-		    <td width="10%" style="text-align: center;">信息入库</td>
+		    <td width="10%" style="text-align: center;">信息是否入库</td>
 		    <td width="10%" style="text-align: center;">
-		    	<input type="radio" name="Is_Storaged" value="radio"  />是 
-		    	<input type="radio" name="Is_Storaged" value="radio"/>否
+		    	<input type="radio" name="Is_Storaged" id="Is_Storaged" onblur="onMouseOut()" value="是 "  />是 
+		    	<input type="radio" name="Is_Storaged" id="Is_Storaged" onblur="onMouseOut()" value="否"/>否
 		    </td>
 		    <td  style="text-align: center;">采集项目</td>
 		    <td  >
-		    	<select name="Collected_Item" style="margin-left:38%;vertical-align:middle;">
-					<option value="">-----请选择-----</option>
-					<option value="扣押">扣押</option>
-					<option value="暂存">暂存</option>
-					<option value="代保管">代保管</option>
+		    	<select name="Collected_Item" id="Collected_Item" onblur="onMouseOut()" style="margin-left:38%;vertical-align:middle;">
+					<option value="-----请选择-----">-----请选择-----</option>
+					<option value="身份信息">身份信息</option>
+					<option value="指纹">指纹</option>
+					<option value="血液">血液</option>
 				</select>	
 		    </td>
 		 </tr>
 		 <tr>
 		 	<td style="text-align: center;">房间号</td>
 		 	<td style="text-align: center;">
-		 		<input type="number" name="Room_ID" class="inputBox"/>
+		 		<input type="" name="Room_ID" id="Room_ID" onblur="onMouseOut()" value="3" class="inputBox"/>
 		 	</td>
 		 	<td style="text-align: center;">办案民警</td>
 		 	<td style="text-align: center;">
@@ -123,6 +169,11 @@ window.onload=function(){
 		   <td colspan="2"><input type="text" name="" value="${SuspectInfor.suspected_Cause }" class="inputBox" disabled="true" placeholder="投案自首   治安传唤"/></td>
 		  </tr>
 		</table>
+		<div id='big' >
+		    <div id='div1'><span class="spanText" id="span-bar"></span></div>
+		    <p id='text'>已完成</p>
+		    <p id='numPoint'>0%</p>
+		</div>
 		<input type="submit" class="btn" value="提交"/>
 	</form>
 </body>

@@ -39,12 +39,13 @@
 </style>
 </head>
 <body>
-<div class="title">
-		   嫌疑人信息管理表
-	</div>
+<div class="title">嫌疑人信息管理表</div>
+
 	<div class="search">
-        <input type="text" class="ipt" name="ss" maxlength="100" autocomplete="off">
-        <input type="submit" value="搜索" class="sbtn">
+		<form action="${pageContext.request.contextPath }/suspectManage_searchsuspectInfor.action" method="post">
+	        <input type="text" class="ipt" name="ss" maxlength="100" autocomplete="off">
+	        <input type="submit" value="搜索" class="sbtn">
+        </form>
     </div> 
 	<div class="wait">
 		<div class="info_head">待办</div>

@@ -32,9 +32,8 @@
 	</script>
 </head>
 <body>
-	 <div class="title">
-		  显示全部信息
-	</div>
+	 <div class="title">嫌疑人信息</div>
+	 <!-- 进入办案区嫌疑人信息登记 -->
 	<div class="enter">
 		<div class="info_head">进入办案区信息</div>
 		<form>
@@ -43,73 +42,56 @@
 			    <td width="15%" rowspan="4" height="10"><div class="bigtouxiang"></div></td>
 			    <td width="2%" rowspan="4" height="10"><div class="touxiang"></div></td>
 			    <td width="8%" height="10">姓名</td>
-			    <td width="20%" height="10"><input type="text" name="demo" ></input></td>    
+			    <td width="20%" height="10"><input type="text" value="${suspect.suspect_Name }" ></input></td>    
 			  </tr>
 			  <tr>
 			  	<td width="10%" height="10">性别</td>
-			    <td width="1%"><input type="text" name="" ></input></td>
+			    <td width="1%"><input type="text" name="" value="${suspect.sex }" ></input></td>
 			  </tr>
 			  <tr>
 			  	<td width="10%" height="10">档案编号</td>
-			    <td width="1%"><input type="text" name="" ></input></td>
+			    <td width="1%"><input type="text" name="" value="${suspect.suspect_ID }" ></input></td>
 			  </tr>
 			  <tr>
 			  	<td width="10%" height="10">身份证号</td>
-			    <td width="1%"><input type="text" name="" ></input></td>
+			    <td width="1%"><input type="text" name="" value="${suspect.identifyCard_Number }" ></input></td>
 			  </tr>
 			  <tr>
 			  	<td>民族</td>
-			    <td><input type="text" name="" ></input></td>
+			    <td><input type="text" name="" value=""></input></td>
 			    <td>出生日期</td>
-			    <td><input type="text" name="" ></input></td>
+			    <td><input type="text" name="" value="${suspect.birthday }"></input></td>
 			  </tr>
 			  <tr>
 			    <td height="29">身份证件类型</td>
-			    <td><input type="text" name="" ></input></td>
+			    <td><input type="text" name="" value="${suspect.type_ID }" ></input></td>
 			     <td height="29">手环ID</td>
 			    <td>
-			    	<select>
-						<option>-----请选择-----</option>
-						<option>扣押</option>
-						<option>暂存</option>
-						<option>代保管</option>
-					</select>	
+			    	<input type="" value="${suspect.band_ID }" />
 			    </td>
 			  </tr>
 			  
 			  <tr>
 			    <td height="170">进入办案区原由</td>
 			    <td colspan="7" style="line-height: 25px;">
-			    	<span class="span1">案由：<input type="text" name="" style="width:50%;border-bottom: solid 1px #000;"></input></span>
-			    	<div class="checkbox">
-			    		<input type="checkbox" name="" value=""> 投案自首
-			    		<input type="checkbox" name="" value=""> 治安传唤
-			    		<input type="checkbox" name="" value=""> 形式传唤
-			    		<input type="checkbox" name="" value=""> 拘传     <br/>
-			    		<input type="checkbox" name="" value=""> 刑事拘留
-			    		<input type="checkbox" name="" value=""> 取保候审
-			    		<input type="checkbox" name="" value=""> 监视居住
-			    		<input type="checkbox" name="" value=""> 逮捕	  <br/>
-			    		<input type="checkbox" name="" value=""> 被害人
-			    		<input type="checkbox" name="" value=""> 证人
-			    		<input type="checkbox" name="" value=""> 辨认陪衬人员
-			    	</div>
-			    	<span class="span2">办案民警签名：<input type="text" name="" style="width:45%;border-bottom: solid 1px #000;"></input></span>
+			    	<span class="span1">案由：<input type="text" name="" value="${suspect.suspected_Cause }" style="width:50%;border-bottom: solid 1px #000;"></input></span>
 		    	</td>
 			  </tr>
 			  <tr>
 			    <td>进入办案区时间</td>
 			    <td colspan="3">
-			    	<input placeholder="请输入年月日时分" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+			    	<input type="text" name="" value="${suspect.enter_Time }" />
 		    	</td>
 		    </tr>
 		    <tr>
-			    <td>管理员签名</td>
-			    <td colspan="3"><input type="text" name="" ></input></td>
+			    <td>办案民警</td>
+			    <td colspan="3"><input type="text" name="" value="${suspect.staff_ID }"/></td>
 			  </tr>
 			</table>
 		</form>
 	</div>
+	
+	<!-- 人身检查记录 -->
 	<div class="check_person">
 		<div class="info_head">人身检查记录</div>
 		<form>
@@ -117,184 +99,181 @@
 		   
 		  	<td colspan="4" style="line-height: 25px;">
 		    	<span class="span1">自述症状：(既往病史、是否饮酒、是否患有传染性疾病)
-				<textarea name="" cols="100%" rows="8%" id="" style="border: 1 solid #888888;LINE-HEIGHT:18px;padding: 3px;"></textarea>
+				<textarea name="" cols="100%" rows="8%" id="" style="border: 1 solid #888888;LINE-HEIGHT:18px;padding: 3px;">
+					${personal_Check.Self_ReportS }
+				</textarea>
 		    	</span>
 		    </td>
 		  </tr>
 		  <tr>
 		  	<td colspan="4" style="line-height: 15px;">
-		  		<span class="span1">检查情况概述：<input type="text" name="" style="width:45%;border-bottom: solid 1px #000;"/></span>
+		  		<span class="span1">检查情况：<input type="text" name="" value="${personal_Check.Check_ReportS }" style="width:45%;border-bottom: solid 1px #000;"/></span>
 		  	</td>
 		  </tr>
 		  <tr>
 		  	<td colspan="4" style="line-height: 25px;">
-		  		<span class="span1">具体检查情况：
-				<div class="checkbox">
-			    	<input type="checkbox" name="" value=""> 体表有伤痕
-		    		<input type="checkbox" name="" value=""> 有饮酒
-		    		<input type="checkbox" name="" value=""> 有拍照		<br/>
-		    	</div>
+		  		<span class="span1">人身检查状态：
+		  		<input type="" name="" value="${personal_Check.Check_Situation }">
 		    	</span>
 		    </td>
 		  </tr>
 		  <tr>
 		  	<td>房间号</td>
-		    <td><input type="text" name="" /></td>
-		    <td>进入办案区的原由</td>
-		  	<td ><input type="text" name="" disabled="true" placeholder="投案自首   治安传唤"/></td>
+		    <td><input type="text" name="" value="${personal_Check.Room_ID }" /></td>
+		    <td>检查民警</td>
+		  	<td ><input type="text" name="" value="${personal_Check.Staff_ID }"/></td>
 		  </tr>
-		  <tr>
+		 <!--  <tr>
 		    <td >检查民警签字</td>
 		    <td colspan="3"><input type="text" name="" /></td>    	
-		  </tr>	 
+		  </tr>	 --> 
 		</table>
 	</form>
 	</div>
+	<!-- 随身物品检查记录 -->
 	<div class="check_money">
 		<div class="info_head">随身物品检查记录</div>
 		<form id="Form" class="Form">
 		<table  class="t" cellspacing="0" cellpadding="0" bordercolor="#cbcbcb" border="1px">
 		  <tr>
 		    <td>物品名称</td>
-		    <td><input type="text" name="" /></td>
+		    <td><input type="text" name="" value="${belongingS.Belonging_Name }"/></td>
 		    <td>物品特征</td>
-		    <td><input type="text" name="" /></td>
+		    <td><input type="text" name="" value="${belongingS.Belonging_Character }"/></td>
 		  </tr>
 		  <tr>
-		    <td>编号</td>
-		    <td><input type="text" name="" /></td>
-		    <td>数量</td>
-		    <td><input type="text" name="" /></td>
+		    <td>物品编号</td>
+		    <td><input type="text" name="" value="${belongingS.Belonging_Number }"/></td>
+		    <td>物品数量</td>
+		    <td><input type="text" name="" value="${belongingS.Belonging_Count }" /></td>
 		   </tr>
 		   <tr>
-		    <td>单位</td>
-		    <td><input type="text" name="" /></td>
+		    <td>物品单位</td>
+		    <td><input type="text" name="" value="${belongingS.Belonging_Unit }"/></td>
 		    <td>保管措施</td>
-		    <td>
-		    	<select>
-					<option>-----请选择-----</option>
-					<option>扣押</option>
-					<option>暂存</option>
-					<option>代保管</option>
-				</select>	
-		  	</td>
+		    <td><input type="text" name="" value="${belongingS.Keeping_ID }" /></td>
 		   </tr>
 		   <tr>
-		    <td>进入办案区原由</td>
-		    <td><input type="text" name="" placeholder="投案自首   治安传唤" readonly="true" /></td>
+		    <td>房间号</td>
+		    <td><input type="text" name="" value="${belongingS.Room_ID }"/></td>
 		    <td>保管柜号</td>
-		    <td><input type="text" name="" /></td>
+		    <td><input type="text" name="${belongingS.Cabinet_Number }" /></td>
 		  </tr>
-		  <tr>
-		    <td>办案人员签字</td>
-		    <td ><input type="text" name="" /></td>
-		    <td >物品保管员签字</td>
-		    <td><input type="text" name=""></td>
+		   <tr>
+		    <td>办案民警</td>
+		    <td><input type="text" name="" value="${belongingS.Staff_ID_Belonging }"/></td>
+		    <td>财物管理民警</td>
+		    <td><input type="text" name="${belongingS.Staff_ID }" /></td>
 		  </tr>
 		</table>
 		</form>
 	</div>
+	
+	<!-- 信息采集记录 -->
+	
 	<div class="collect_info">
 		<div class="info_head">信息采集记录</div>
 		<form>
 		<table  class="" cellspacing="0" cellpadding="0" bordercolor="#cbcbcb" border="1px">
 		  <tr>
-		    <td width="10%" style="text-align: center;">信息采集</td>
+		    <td width="10%" style="text-align: center;">信息是否采集</td>
 		    <td width="10%" style="text-align: center;">
-		    	<input type="radio" name="sure" value="radio"  />是
-		    	<input type="radio" name="sure" value="radio"/>否
+		    	<input type="" name="" value="${information_Collection.Is_Collected }">
 		    </td>
-		    <td width="10%" style="text-align: center;">采集项目</td>
+		    <td width="10%" style="text-align: center;">是否检查对比</td>
 		    <td width="10%" style="text-align: center;">
-		    	<input type="radio" name="sure" value="radio"  />是
-		    	<input type="radio" name="sure" value="radio"/>否
+		    	<input type="" name="" value="${information_Collection.Is_Checked }">
 		    </td>   
 		  </tr>
 		  <tr>
-		    <td width="10%" style="text-align: center;">信息入库</td>
+		    <td width="10%" style="text-align: center;">信息是否入库</td>
 		    <td width="10%" style="text-align: center;">
-		    	<input type="radio" name="sure" value="radio"  />是 
-		    	<input type="radio" name="sure" value="radio"/>否
+		    	<input type="" name="" value="${information_Collection.Is_Storaged }">
 		    </td>
 		    <td  style="text-align: center;">采集项目</td>
-		    <td  >
-		    	<select style="margin-left:38%;vertical-align:middle;">
-					<option>-----请选择-----</option>
-					<option>扣押</option>
-					<option>暂存</option>
-					<option>代保管</option>
-				</select>	
+		    <td>
+		    	<input type="" name="" value="${information_Collection.Collected_Item }">
 		    </td>
 		 </tr>
-		 <tr>
-		   <td  colspan="2" style="text-align: center;">进入办案区原由</td>
-		   <td colspan="2"><input type="text" name="" disabled="true" placeholder="投案自首   治安传唤"/></td>
-		  </tr>
 		</table>
 	</div>
+	
+	<!-- 询问、讯问、辨认、等候、休息、饮食等活动记录 -->
+	
 	<div class="record_act">
 		<div class="info_head">询问、讯问、辨认、等候、休息、饮食等活动记录</div>
 		<form id="Form" class="Form">
 		<table  class="t" cellspacing="0" cellpadding="0" bordercolor="#cbcbcb" border="1px">
+		  <tr>
 		  	<td>房间号</td>
-		    <td><input type="text" name="" /></td>
-		    <td>进入办案区原由</td>
-		    <td>
-				<input type="text" readonly="readonly" name="" placeholder="投案自首   治安传唤"/>
-		    </td>
+		    <td><input type="text" name="" value="${activity_Record.Room_ID }"/></td>
+		    <td>讯问音视频编码</td>
+		    <td ><input type="text" name="" value="${activity_Record.Vedio_Number }" ></input></td>
 		  </tr>
 		  <tr>
 		    <td  style="text-align: center;">开始时间</td>
 		    <td>
-		  	<input placeholder="请输入开始时间" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+		  	<input type="" name="" value="${activity_Record.Start_Time }">
 		    <td width="15%" style="text-align: center;">结束时间</td>
 		    <td>
-		  	<input placeholder="请输入结束时间" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+		  	<input type="" name="" value="${activity_Record.End_Time }">
 		  	</td>
 		  </tr>
 		  <tr>
-		    <td>备注</td>
-		    <td><input type="text" name="" /></td>
-		    <td>活动内容/讯问音视频编码</td>
-		    <td ><input type="file" name="" ></input></td>
-		   </tr>
+		    <td>活动内容</td>
+		    <td><input type="text" name="" value="${activity_Record.Activity_Record }" /></td>
+		    <td  style="text-align: center;">办案民警</td>
+		    <td ><input type="" name="" value="${activity_Record.StaffS }"></input></td>
+		  </tr>
+		  <tr>
+			  <td colspan="4" style="line-height: 25px;">
+			    	<span class="span1">备注（具体备注信息，必填）
+					<textarea name="Remark" cols="100%" rows="8%" id="" style="border: 1 solid #888888;LINE-HEIGHT:18px;padding: 3px;">
+						${activity_Record.Remark }
+					</textarea>
+			    	</span>
+			  </td>
+		  </tr>
 		</table>
 	</form>
 	</div>
+	
+	<!-- 离开办案区信息登记 -->
+	
 	<div class="leave">
 		<div class="info_head">离开办案区</div>
 		<table  class="" cellspacing="0" cellpadding="0" bordercolor="#cbcbcb" border="1px">
 		  <tr>
 		    <td height="20">最终离开时间</td>
 		    <td>
-		    	<input placeholder="请输入年月日时分" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+		    	<input type="" name="" value="${leave_Record.Leave_Time }">
 		    </td>
 		    <td>离开原因</td>
 		    <td>
-			    	<select>
-						<option value="0">-----请选择-----</option>
-						<option value="1">查证结束</option>
-						<option value="2">刑拘</option>
-						<option value="3">行政拘留</option>
-						<option value="4">警告</option>
-						<option value="5">罚款</option>
-						<option value="6">教育</option>
-						<option value="7">释放</option>
-					</select>
+		    	<input type="" name="" value="${leave_Record.Leave_Reason }">
 		    </td>
 		  </tr>
+		  
 		  <tr>
-		    <td height="170">随身物品处理情况</td>
+		  	<td width="10%">临时离开时间</td>
+		    <td width="1%"><input type="" name="" value="${leave_Record.TempLeave_Time }"></td>
+		  	<td width="10%">临时离开原因</td>
+		    <td width="1%"><input type="" name="" value="${leave_Record.TempLeave_Reason }"></input></td>
+		  </tr>
+		  <tr>
+		  	<td width="10%">返回时间</td>
+		    <td width="1%"><input type="" name="" value="${leave_Record.Return_Time }"></input></td>
+		  	<td width="10%">物品处理时间</td>
+		    <td width="1%"><input type="" name="" value="${leave_Record.Treatment_Time }"></input></td>
+		  </tr>
+		  <tr>
+		    <td height="170">随身物品处理</td>
 		    <td colspan="3" style="text-align:left;line-height: 25px;text-indent: 10px;">
 		    	<div class="info">
-			    	<span class="span1">随身物品处理情况：</span>
-		    		<input type="checkbox" name="" value="" style="margin-left: 15px;"> 全部返还
-		    		<input type="checkbox" name="" value=""> 部分返还
-		    		<input type="checkbox" name="" value=""> 未返还		<br/>
-			    	<span class="span2">未返还物品情况记载：<input type="text" name="" style="width:45%;border-bottom: solid 1px #000;"></input></span>
-			    	<span class="span2">领取人签名：<input type="text" name="" style="width:50%;border-bottom: solid 1px #000;"></input></span>
-			    	<span class="span2">身份证号码：<input type="text" name="" style="width:50%;border-bottom: solid 1px #000;"></input>
-			    		<input placeholder="请输入年月日时分" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})"> 
+			    	<span class="span1">随身物品处理方式：<input type="" name="" value="${leave_Record.BelongingS_Treatment_Method }"></span>
+			    	<span class="span2">未返还物品记录：<input type="text" name="" value="${leave_Record.BelongingS_Treatment_Record }"></input></span>
+			    	<span class="span2">领取人：<input type="text" name="" value="${leave_Record.Recipient_Person }"></input></span>
+			    	<span class="span2">身份证号码：<input type="text" name="" value="${leave_Record.Recipient_Person_Number }"></input>
 			    	</span>
 			    </div>
 	    	</td>
@@ -302,24 +281,13 @@
 		  <tr>
 		    <td >房间号</td>
 		    <td >
-		    	<input type="text" name="" />
+		    	<input type="text" name="" value="${leave_Record.Room_ID }" />
 	    	</td>
 	    	
-	    	<td >进入办案区原由</td>
-		    <td>
-				<input type="text" name="" disabled="true" placeholder="投案自首   治安传唤"/>
-		    </td>
-		   
-		  </tr>
-		  <tr>
-		  	<td >管理员及办案部门负责人签名</td>
+	    	<td >办案民警</td>
 		    <td >
-		    	<input type="text" name="" />
+		    	<input type="text" name="" value="${leave_Record.Staff_ID }" />
 	    	</td> 
-	    	<td >返回时间</td>
-		    <td >
-	 			<input type="text" name="" />
-	    	</td>
 		  </tr>
 		</table>
 	</div>

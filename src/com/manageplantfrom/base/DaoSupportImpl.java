@@ -12,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import com.manageplantfrom.entity.PHCSMP_Suspect;
 import com.manageplantfrom.utils.MyHibernateSessionFactory;
 
 public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
@@ -47,4 +48,22 @@ public abstract class DaoSupportImpl<T> implements DaoSupport<T> {
 		getSession().update(entity);
 		tx.commit();//提交事务
 	}
+
+	@Override
+	public T findInforBySuspetcId(String suspectId) {
+		
+		String hql = "from "+clazz.getName()+" t where t.suspect_ID=?";
+		
+		System.out.println(hql);
+		tx = getSession().beginTransaction();//开启事务
+		
+		Query query = getSession().createQuery(hql);
+		query.setParameter(0, suspectId);
+		T entity = (T) query.uniqueResult();
+		
+		tx.commit();//提交事务
+		
+		return entity;
+	}
+	
 }

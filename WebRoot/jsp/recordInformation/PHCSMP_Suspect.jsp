@@ -135,7 +135,7 @@
 	</c:if>
 	 <div class="title">进入办案区人员基本情况</div>
 	<form action="${pageContext.request.contextPath }/suspect_addSuspectInfor.action" method="post">
-	<table  class="" style="cellspacing="0" cellpadding="0" bordercolor="#cbcbcb" border="1px"" >
+	<table  class="" cellspacing="0" cellpadding="0" bordercolor="#cbcbcb" border="1px">
 		  <tr >
 		    <td width="15%" rowspan="4" height="10"><div class="bigtouxiang"><img src="${pageContext.request.contextPath }/images/ercun.png"></div></td>
 		    <td width="2%" rowspan="4" height="10"><div class="touxiang"><img src="${pageContext.request.contextPath }/images/yicun.png"></div></td>
@@ -158,18 +158,18 @@
 		  	<td>民族</td>
 		    <td><input type="text" name="" class="inputBox"></input></td>
 		    <td>出生日期</td>
-		    <td><input placeholder="格式：1994-11-11" type="date" name="Birthday" id="Birthday" class="inputBox" onblur="onMouseOut()" /></td>
+		    <td><input type="date" name="Birthday" id="Birthday" class="inputBox" onblur="onMouseOut()" /></td>
 		  </tr>
 		  <tr>
 		    <td height="29">身份证件类型</td>
 		    <td><input type="text" name="Type_ID" id="Type_ID" class="inputBox" onblur="onMouseOut()" /></td>
 		    <td height="29">手环ID</td>
 		    <td>
-		    	<select name="band_ID" id="band_ID">
-					<option value="请选择">-----请选择-----</option>
+		    	<select name="band_ID" id="band_ID" >
+					<option value="0">-----请选择-----</option>
 					<c:forEach items="${bundList}" var="item" varStatus="status">
 						<option value="${item.band_ID }">${item.band_ID }</option>
-					</c:forEach>  
+					</c:forEach>   
 				</select>
 		    </td>
 		  </tr>
@@ -191,7 +191,7 @@
 		    		<input type="checkbox" name="Suspected_Cause" value="证人"> 证人
 		    		<input type="checkbox" name="Suspected_Cause" value="辨认陪衬人员"> 辨认陪衬人员
 		    	</div>
-		    	<span class="span2">办案民警 <input type="text" name="Staff_ID" id="Staff_ID" onblur="onMouseOut()" disabled="disabled" value="${users.real_Name }" style="width:45%;border-bottom: solid 1px #000;"></input></span>
+		    	<span class="span2">办案民警 <input type="number" name="" id="Staff_ID" onblur="onMouseOut()" disabled="disabled" value="${users.real_Name }" style="width:45%;border-bottom: solid 1px #000;"></input></span>
 	    	</td>
 		  </tr>
 		  <tr>
@@ -202,7 +202,7 @@
 	    </tr>
 	    <tr>
 		    <td>管理员</td>
-		    <td colspan="3"><input type="text" name="" class="inputBox" ></input></td>
+		    <td colspan="3"><input type="text" name="" value="${users.real_Name }" class="inputBox" ></input></td>
 		  </tr>
 		</table>
 		<div id='big'>

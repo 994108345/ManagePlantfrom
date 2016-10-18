@@ -12,6 +12,11 @@ import com.manageplantfrom.serviceImple.SuspectServiceImple;
 import com.manageplantfrom.utils.CompleteCheck;
 import com.whfstudio.test.reflectTest;
 
+/**
+ * 嫌疑人入区信息登记的action
+ * @author wuhaifei
+ * @d2016年10月17日
+ */
 public class PHCSMP_Suspect_Action extends BaseAction<PHCSMP_Suspect> {
 	
 	/**

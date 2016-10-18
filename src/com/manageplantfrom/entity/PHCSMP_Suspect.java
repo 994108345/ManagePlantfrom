@@ -14,7 +14,7 @@ import org.hibernate.annotations.Columns;
 @SuppressWarnings("unused")
 public class PHCSMP_Suspect {
 	private int id;
-	private String suspect_ID;//档案编号（主键）
+	private String Suspect_ID;//档案编号（主键）
 	private int band_ID;//手环ID
 	private String suspect_Name;//姓名
 	private String sex;//性别
@@ -33,6 +33,14 @@ public class PHCSMP_Suspect {
 	private int total_record;//需要填写的总记录数
 	private int fill_record;//当前填写的记录数
 	
+	
+	public String getSuspect_ID() {
+		return Suspect_ID;
+	}
+	public void setSuspect_ID(String suspect_ID) {
+		Suspect_ID = suspect_ID;
+	}
+
 	
 	public Date getEnter_Time() {
 		return enter_Time;
@@ -64,12 +72,6 @@ public class PHCSMP_Suspect {
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public String getSuspect_ID() {
-		return suspect_ID;
-	}
-	public void setSuspect_ID(String suspect_ID) {
-		this.suspect_ID = suspect_ID;
 	}
 	public int getBand_ID() {
 		return band_ID;
@@ -140,7 +142,7 @@ public class PHCSMP_Suspect {
 	
 	@Override
 	public String toString() {
-		return super.toString();
+		return this.Suspect_ID+" "+this.suspect_Name+" "+this.sex;
 	}
 	
 }

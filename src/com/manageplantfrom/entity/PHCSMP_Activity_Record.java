@@ -11,6 +11,12 @@ import java.util.Date;
  */
 public class PHCSMP_Activity_Record implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+
 	private int Activity_Record_ID;
 	
 	private String Suspect_ID;//档案编号
@@ -24,6 +30,8 @@ public class PHCSMP_Activity_Record implements Serializable{
 	
 	private int total_record = 60;//需要填写的总记录数
 	private int fill_record;//当前填写的记录数
+	
+	
 	
 	public String getSuspect_ID() {
 		return Suspect_ID;

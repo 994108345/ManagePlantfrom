@@ -11,7 +11,7 @@ import com.manageplantfrom.entity.PHCSMP_Suspect;
  * @author wuhaifei
  * @d2016年8月14日
  */
-public interface SuspectService {
+public interface SuspectService extends DaoSupport<PHCSMP_Suspect> {
 	/**
 	 * 保存嫌疑人信息到数据库
 	 * @param model
@@ -32,11 +32,16 @@ public interface SuspectService {
 	 */
 	List<PHCSMP_Band> findAllBundInfor();
 
+	/**
+	 * 根据激活码查找嫌疑人信息
+	 * @param roomId 房间号
+	 * @return 嫌疑人的实体类信息
+	 */
 	PHCSMP_Suspect findInfroByActiveCode(int roomId);
 	/**
 	 * 根据手环id更新activeCode
-	 * @param bandId
-	 * @param roomId
+	 * @param bandId 手环id
+	 * @param roomId 房间号
 	 * @return 
 	 */
 	int updateSuspectInforByBandId(int bandId, int roomId);

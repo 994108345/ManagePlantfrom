@@ -1,5 +1,6 @@
 package com.manageplantfrom.serviceImple;
 
+import com.manageplantfrom.base.DaoSupportImpl;
 import com.manageplantfrom.dao.BelongingInforDao;
 import com.manageplantfrom.daoImple.BelongingInforDaoImple;
 import com.manageplantfrom.entity.PHCSMP_BelongingS;
@@ -10,7 +11,7 @@ import com.manageplantfrom.service.BelongingInforService;
  * @author wuhaifei
  * @d2016年8月16日
  */
-public class BelongingInforServiceImple implements BelongingInforService {
+public class BelongingInforServiceImple extends DaoSupportImpl<PHCSMP_BelongingS> implements BelongingInforService {
 	private BelongingInforDao dao = new BelongingInforDaoImple();
 
 	@Override

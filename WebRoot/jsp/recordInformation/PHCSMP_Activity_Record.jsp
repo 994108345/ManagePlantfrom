@@ -51,75 +51,71 @@
 		  </tr>
 		  <tr>
 		  	<td width="10%" height="20">档案编号</td>
-		    <td width="1%"><input type="text" name="" ></input></td>
+		    <td width="1%"><input type="text" name="Suspect_ID" value="${SuspectInfor.Suspect_ID}" ></input></td>
 		  </tr>
 		  <tr>
 		  	<td width="10%" height="20">身份证号</td>
 		    <td width="1%"><input type="text" name="" value="${SuspectInfor.identifyCard_Number }" ></input></td>
 		  </tr>
+		  
+		  <tr>
 		  	<td style="text-align: center;">房间号</td>
-		    <td><input type="text" name="" /></td>
+		    <td><input type="text" name="Room_ID" /></td>
 		    <td  style="text-align: center;">进入办案区原由</td>
 		    <td>
-				<input type="text" readonly="readonly" name="" placeholder="投案自首   治安传唤"/>
+				<input type="text" readonly="readonly" name="" value="${SuspectInfor.suspected_Cause }"/>
 		    </td>
 		  </tr>
 		  <tr>
 		    <td  style="text-align: center;">开始时间</td>
 		    <td>
-		  	<input placeholder="请输入开始时间" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+		  	<input name="Start_Time" placeholder="请输入开始时间" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 		    <td width="15%" style="text-align: center;">结束时间</td>
 		    <td>
-		  	<input placeholder="请输入结束时间" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+		  	<input name="End_Time" placeholder="请输入结束时间" class="laydate-icon" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 		  	</td>
 		  </tr>
 		  <tr>
-		    <td  style="text-align: center;">活动内容/讯问音视频编码</td>
+		    <td  style="text-align: center;">讯问音视频编码</td>
+		    <td ><input type="text" name="Vedio_Number" ></input></td>
+		    <td>活动内容</td>
+		    <td><input type="text" name="Activity_Record" /></td>
+		  </tr>
+		  <tr>
+		  	<td  style="text-align: center;">办案民警</td>
+		    <td ><input type="text" name="StaffS" ></input></td>
+		    <td  style="text-align: center;">备注概述</td>
 		    <td ><input type="text" name="" ></input></td>
-		    <td>备注</td>
-		    <td><input type="text" name="" /></td>
 		  </tr>
 		  <tr>
 		  <td colspan="4" style="line-height: 25px;">
-		    	<span class="span1">自述症状：(既往病史、是否饮酒、是否患有传染性疾病)
-				<textarea name="" cols="100%" rows="8%" id="" style="border: 1 solid #888888;LINE-HEIGHT:18px;padding: 3px;"></textarea>
+		    	<span class="span1">备注（具体备注信息，必填）
+				<textarea name="Remark" cols="100%" rows="8%" id="" style="border: 1 solid #888888;LINE-HEIGHT:18px;padding: 3px;"></textarea>
 		    	</span>
 		    </td>
 		  </tr>
 		</table>
-		<br/>
-		<div class="step_context test">
-			<ul>
-			<li class="firstFinshStep"><span>1</span><a href="#" data-value="1" data-text="第一步">第一步</a></li>
-			<li class="finshStep"><span>2</span><a href="#" data-value="2" data-text="第二步">第二步</a></li>
-			<li class="finshStep"><span>3</span><a href="#" data-value="3" data-text="第三步">第三步</a></li>
-			<li class="finshStep"><span>4</span><a href="#" data-value="4" data-text="第四步">第四步</a></li>
-			<li class="coressStep"><span>5</span><a href="#" data-value="5" data-text="第五步">第五步</a></li>
-			<li class="loadStep"><span>6</span><a href="#" data-value="6" data-text="第六步">第六步</a></li>
-			<li class="last"><span>7</span><a href="#" data-value="7" data-text="第七步">第七步</a></li>
-			</ul>
+		<div class="step_context">
+		<!-- 加载进度条 -->
 		</div>
 		<input class="btn" type="submit" value="提交"/>
 	</form>
-	<script type="text/javascript">
+<script type="text/javascript">
 	//所有步骤的数据
-	var stepListJson=[{StepNum:1,StepText:"第一步"},
-    {StepNum:2,StepText:"第二步"},
-    {StepNum:3,StepText:"第三步"},
-    {StepNum:4,StepText:"第四步"},
-    {StepNum:5,StepText:"第五步"},
-    {StepNum:6,StepText:"第六步"},
-    {StepNum:7,StepText:"第七步"}];
+	var stepListJson=[{StepNum:1,StepText:"人身检查记录",StepHref:"personalCheck_loadInfor.action"},
+    {StepNum:2,StepText:"随身物品记录",StepHref:"belonging_loadInfor.action"},
+    {StepNum:3,StepText:"信息采集记录",StepHref:"IC_loadInfor.action"},
+    {StepNum:4,StepText:"询问讯问记录",StepHref:"AR_loadInfor.action"}
+    ];
 	
 	//当前进行到第几步
-	var currentStep=5;
+	var currentStep=3;
 //new一个工具类
-var StepTool = new Step_Tool_dc("test","mycall");
+var StepTool = new Step_Tool_dc("step_context","mycall");
 //使用工具对页面绘制相关流程步骤图形显示
 StepTool.drawStep(currentStep,stepListJson);
 //回调函数
 function mycall(restult){
-//	alert("mycall"+result.value+":"+result.text);
 	StepTool.drawStep(result.value,stepListJson);
 	//TODO...这里可以填充点击步骤的后加载相对应数据的代码
 }

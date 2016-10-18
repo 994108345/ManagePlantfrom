@@ -46,11 +46,6 @@ ServletResponseAware,ServletContextAware {
 	
 	public void readRFID() throws IOException{
 	
-//		if(((new Date().getTime())-startTime.getTime())/1000<3){
-//			return ;
-//		}
-//		startTime = new Date();
-		
 		RoomInforDao roomInfor = new RoomInforDaoImple();//查询房间号的dao
 		BandInforDao bandInforDao = new BandInforDaoImple();
 		

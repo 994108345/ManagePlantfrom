@@ -15,9 +15,8 @@ public class PHCSMP_Band implements Serializable {
 	 */
 	private static final long serialVersionUID = 667217033307265651L;
 	
-	private int band_ID;//手环ID（主键）
+	private int band_ID;//手环ID
 	private String remark;//备注
-	
 	
 	public int getBand_ID() {
 		return band_ID;
@@ -25,6 +24,7 @@ public class PHCSMP_Band implements Serializable {
 	public void setBand_ID(int band_ID) {
 		this.band_ID = band_ID;
 	}
+	
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}

@@ -2,6 +2,7 @@ package com.manageplantfrom.serviceImple;
 
 import java.util.List;
 
+import com.manageplantfrom.base.DaoSupportImpl;
 import com.manageplantfrom.dao.BandInforDao;
 import com.manageplantfrom.dao.SuspectDao;
 import com.manageplantfrom.daoImple.BandInforDaoImple;
@@ -15,7 +16,7 @@ import com.manageplantfrom.service.SuspectService;
  * @author wuhaifei
  * @d2016年8月14日
  */
-public class SuspectServiceImple implements SuspectService {
+public class SuspectServiceImple extends DaoSupportImpl<PHCSMP_Suspect> implements SuspectService {
 
 	private SuspectDao suspectDao = new SuspectDaoImple();
 	private BandInforDao bundInforDao = new BandInforDaoImple();

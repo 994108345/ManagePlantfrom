@@ -24,24 +24,95 @@
 	<script type="text/javascript" src="${pageContext.request.contextPath }/js/jquery-1.9.1.min.js"></script>
 	<link rel="stylesheet" href="${pageContext.request.contextPath }/css/progress-bar.css" type="text/css">
 <script type="text/javascript">
-window.onload=function(){ 
-	var oDiv = document.getElementsByTagName('div')[0];
-	var oSpan = document.getElementsByTagName('span')[0];
-	var oP = document.getElementsByTagName('p')[0];
-	var num=10;
-	var time = 0;
-	var timer = null;
-	timer = setInterval(function(){
-
-		if(num < 60){ 
-			oSpan.style.width = oSpan.offsetWidth + 5 + 'px';
-			num = num + 1; 
-			oP.innerHTML = num -10+ '%';
-		}else{ 
-			clearInterval(timer);
+var count = 0;
+		var myArr = new Array();
+		//初始化数组myArr
+		for(var i=0;i<10;i++){
+			myArr[i] = 0;
 		}
-	},time);
-}
+		
+        function onMouseOut() {
+        	var isChange = false;
+            var belongingName = document.getElementById("Belonging_Name").value;
+            var Belonging_Number = document.getElementById("Belonging_Number").value;
+            var belongingCharacter = document.getElementById("Belonging_Character").value;
+			var belongingCount = document.getElementById("Belonging_Count").value;
+			var belongingUnit = document.getElementById("Belonging_Unit").value;
+			var keepingID = document.getElementById("Keeping_ID").value;
+			var cabinetNumber = document.getElementById("Cabinet_Number").value;
+			
+            if(belongingName != ""&&myArr[1] == 0){
+            	console.log(belongingName);
+                count = count+1;
+                myArr[1]=1;
+                isChange = true;
+                
+            }
+            
+             if(belongingCharacter != ""&&myArr[2] == 0){
+             console.log(belongingCharacter);
+                count = count+1;
+                myArr[2]=1;
+                isChange = true;
+            } 
+            
+             if(Belonging_Number != ""&&myArr[3] == 0){
+             console.log(Belonging_Number);
+                count = count+1;
+                myArr[3]=1;
+                isChange = true;
+            } 
+            
+            if(belongingCount != ""&&myArr[4] == 0){
+            console.log(belongingCount);
+                count = count+1;
+                myArr[4]=1;
+                isChange = true;
+            }
+            
+            if(belongingUnit != ""&&myArr[5] == 0){
+            console.log(belongingUnit);
+                count = count+1;
+                myArr[5]=1;
+                isChange = true;
+            } 
+             if(keepingID != "-----请选择-----"&&myArr[6] == 0){
+             console.log(keepingID);
+                count = count+1;
+                myArr[6]=1;
+                isChange = true;
+            } 
+            //保险柜编号
+             if(cabinetNumber != ""&&myArr[7] == 0){
+             console.log(cabinetNumber);
+                count = count+1;
+                myArr[7]=1;
+                isChange = true;
+            }
+            
+            
+            if(isChange){
+            	jindutiao(count*8);
+            }
+        }
+	
+		function jindutiao(coun) {
+            //var oDiv = document.getElementById("big");
+            var oSpan = document.getElementsByClassName("spanText")[0];
+            var oP = document.getElementById("numPoint");
+            var num=0;
+            var time = 0;
+            var timer = null;
+            timer = setInterval(function(){
+                if(num < coun){
+                    oSpan.style.width = oSpan.offsetWidth + 2 + 'px';
+                    num = num + 1;
+                    oP.innerHTML = num + '%';
+                }else{
+                    clearInterval(timer);
+                }
+            },time);
+        }
 </script>
 	
 </head>
@@ -77,41 +148,40 @@ window.onload=function(){
 		  </tr>
 		  <tr>
 		    <td>身份类型</td>
-		    <td><input type="text" name="" /></td>
+		    <td><input type="text" name="${SuspectInfor.type_ID }" /></td>
 		    <td>房间号</td>
-		    <td><input type="text" name="Room_ID" /></td>
-		    
+		    <td><input type="number" name="Room_ID" /></td>
 		  </tr>
 		  <tr>
 		    <td>物品名称</td>
-		    <td><input type="text" name="Belonging_Name" /></td>
+		    <td><input type="text" name="Belonging_Name" id="Belonging_Name" onblur="onMouseOut()" /></td>
 		    <td>物品特征</td>
-		    <td><input type="text" name="Belonging_Character" /></td>
+		    <td><input type="text" name="Belonging_Character" id="Belonging_Character" onblur="onMouseOut()" /></td>
 		  </tr>
 		  <tr>
 		    <td>物品编号</td>
-		    <td><input type="text" name="Belonging_Number" /></td>
-		    <td>数量</td>
-		    <td><input type="text" name="Belonging_Count" /></td>
+		    <td><input type="text" name="Belonging_Number" id="Belonging_Number" onblur="onMouseOut()" /></td>
+		    <td>物品数量</td>
+		    <td><input type="number" name="Belonging_Count" id="Belonging_Count" onblur="onMouseOut()"/></td>
 		   </tr>
 		   <tr>
-		    <td>单位</td>
-		    <td><input type="text" name="Belonging_Unit" /></td>
+		    <td>物品单位</td>
+		    <td><input type="text" name="Belonging_Unit" id="Belonging_Unit" onblur="onMouseOut()" /></td>
 		    <td>保管措施</td>
 		    <td>
-		    	<select name="Keeping_ID">
-					<option value="">-----请选择-----</option>
-					<option value="">扣押</option>
-					<option value="">暂存</option>
-					<option value="">代保管</option>
+		    	<select name="Keeping_ID" id="Keeping_ID" onblur="onMouseOut()">
+					<option value="0">-----请选择-----</option>
+					<option value="1">扣押</option>
+					<option value="2">暂存</option>
+					<option value="3">代保管</option>
 				</select>	
 		  	</td>
 		   </tr>
 		   <tr>
 		    <td>进入办案区原由</td>
 		    <td><input type="text" name="" value="${SuspectInfor.suspected_Cause }" placeholder="投案自首   治安传唤" readonly="true" /></td>
-		    <td>保管柜号</td>
-		    <td><input type="text" name="Cabinet_Number" /></td>
+		    <td>保险柜编号</td>
+		    <td><input type="text" name="Cabinet_Number" id="Cabinet_Number" onblur="onMouseOut()" /></td>
 		  </tr>
 		  <tr>
 		    <td>办案人员</td>
@@ -120,6 +190,11 @@ window.onload=function(){
 		    <td><input type="text" name="" value="${users.real_Name}"></td>
 		  </tr>
 		</table>
+		<div id='big' >
+		    <div id='div1'><span class="spanText" id="span-bar"></span></div>
+		    <p id='text'>已完成</p>
+		    <p id='numPoint'>0%</p>
+		</div>
 		<input type="submit" class="btn" value="提交"/>
 	</form>
 </body>

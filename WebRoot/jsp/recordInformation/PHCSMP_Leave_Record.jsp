@@ -50,7 +50,7 @@
 		  </tr>
 		  <tr>
 		  	<td width="10%">档案编号</td>
-		    <td width="1%"><input type="text" name="" class="inputBox" ></input></td>
+		    <td width="1%"><input type="text" name="Suspect_ID" value="${SuspectInfor.Suspect_ID }" class="inputBox" ></input></td>
 		  </tr>
 		  <tr>
 		  	<td width="10%">身份证号</td>
@@ -59,7 +59,7 @@
 		  <tr>
 		    <td height="20">最终离开时间</td>
 		    <td>
-		    	<input placeholder="请输入年月日时分" class="laydate-icon" class="inputBox" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+		    	<input name="" placeholder="请输入年月日时分" class="laydate-icon" class="inputBox" onClick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
 		    </td>
 		    <td>离开原因</td>
 		    <td colspan="3">
@@ -76,13 +76,25 @@
 		    </td>
 		  </tr>
 		  <tr>
+		  	<td width="10%">临时离开时间</td>
+		    <td width="1%"><input type="text" name="TempLeave_Time" class="inputBox"></input></td>
+		  	<td width="10%">临时离开原因</td>
+		    <td width="1%"><input type="text" name="TempLeave_Reason" class="inputBox"></input></td>
+		  </tr>
+		  <tr>
+		  	<td width="10%">返回时间</td>
+		    <td width="1%"><input type="text" name="Return_Time" class="inputBox"></input></td>
+		  	<td width="10%">物品处理时间</td>
+		    <td width="1%"><input type="text" name="Treatment_Time" class="inputBox"></input></td>
+		  </tr>
+		  <tr>
 		    <td height="170">随身物品处理情况</td>
 		    <td colspan="3" style="text-align: left;line-height: 25px;">
 		    	<div class="info">
 			    	<span class="span1">随身物品处理情况：</span>
-		    		<input type="checkbox" name="BelongingS_Treatment_Method" value="全部返还"> 全部返还
-		    		<input type="checkbox" name="BelongingS_Treatment_Method" value="部分返还"> 部分返还
-		    		<input type="checkbox" name="BelongingS_Treatment_Method" value="未返还"> 未返还		<br/>
+		    		<input type="radio" name="BelongingS_Treatment_Method" value="全部返还"> 全部返还
+		    		<input type="radio" name="BelongingS_Treatment_Method" value="部分返还"> 部分返还
+		    		<input type="radio" name="BelongingS_Treatment_Method" value="未返还"> 未返还		<br/>
 			    	<span class="span2">未返还物品情况记载：<input type="text" name="BelongingS_Treatment_Record" class="inputBox" style="width:45%;border-bottom: solid 1px #000;"></input></span>
 			    	<span class="span2">领取人签名：<input type="text" name="Recipient_Person" class="inputBox" style="width:50%;border-bottom: solid 1px #000;"></input></span>
 			    	<span class="span2">领取人证件号码：<input type="text" name="Recipient_Person_Number" class="inputBox" style="width:50%;border-bottom: solid 1px #000;"></input>
@@ -103,7 +115,7 @@
 		   
 		  </tr>
 		  <tr>
-		  	<td >管理员及办案部门负责人</td>
+		  	<td >办案民警</td>
 		    <td >
 		    	<input type="text" name="" class="inputBox" />
 	    	</td> 
@@ -113,7 +125,7 @@
 	    	</td>
 		  </tr>
 		</table>
-		<input class="btn" type="submit" value="提交"/>
+		<input class="btn" type="submit" value="下一步"/>
 	</form>
 </body>
 </html>

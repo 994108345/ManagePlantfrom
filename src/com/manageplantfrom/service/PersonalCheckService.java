@@ -1,5 +1,6 @@
 package com.manageplantfrom.service;
 
+import com.manageplantfrom.base.DaoSupport;
 import com.manageplantfrom.entity.PHCSMP_Personal_Check;
 
 /**
@@ -7,7 +8,7 @@ import com.manageplantfrom.entity.PHCSMP_Personal_Check;
  * @author wuhaifei
  * @d2016年8月14日
  */
-public interface PersonalCheckService {
+public interface PersonalCheckService extends DaoSupport<PHCSMP_Personal_Check> {
 
 	/**
 	 * 保存人身检查记录信息

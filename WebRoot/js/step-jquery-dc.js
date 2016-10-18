@@ -9,7 +9,7 @@ var Step_Tool_dc =function(ClassName,callFun){
     this.Steps = new Array(),
     this.stepAllHtml="";
 
-}
+};
 Step_Tool_dc.prototype={
     /**
      * 绘制到目标位置
@@ -18,8 +18,7 @@ Step_Tool_dc.prototype={
         this.currStep=currStep;
 
             for (var i=0; i<stepListJson.length;i++){
-            var  Step_Obj =new Step( this.currStep,stepListJson[i].StepNum,stepListJson[i].StepText,stepListJson.length);
-
+            var  Step_Obj =new Step( this.currStep,stepListJson[i].StepNum,stepListJson[i].StepText,stepListJson[i].StepHref,stepListJson.length);
                 Step_Obj.createStepHtml();
                 this.Steps.push(Step_Obj);
             }
@@ -53,18 +52,19 @@ Step_Tool_dc.prototype={
         jQuery("."+this.ClassName).html("");
         this.stepAllHtml="";
     }
-}
-var Step=function(currStep,StepNum,StepText,totalCount){
+};
+var Step=function(currStep,StepNum,StepText,StepHref,totalCount){
         this.currStep=currStep,
         this.StepNum=StepNum ,
         this.StepText=StepText,
+        this.StepHref=StepHref,//链接
         this.totalCount=totalCount,
         this.htmlCode="";
-}
+};
 Step.prototype={
     createStepHtml:function(){
          var stepHtml="\<span\>"+this.StepNum+"\</span\>";
-        stepHtml=stepHtml+"\<a href=\"#\"    data-value=\""+this.StepNum+"\" data-text=\""+this.StepText+"\" \>"+this.StepText+"\</a\>";
+        stepHtml=stepHtml+"\<a href=\"" +this.StepHref+"\"data-value=\""+this.StepNum+"\" data-text=\""+this.StepText+"\" \>"+this.StepText+"\</a\>";
         if(this.currStep>this.totalCount){
             this.currStep=this.totalCount;
         }else if(this.currStep<=0){this.currStep=1;}

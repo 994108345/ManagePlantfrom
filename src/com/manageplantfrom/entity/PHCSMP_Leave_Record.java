@@ -12,7 +12,13 @@ import java.util.Date;
  */
 public class PHCSMP_Leave_Record implements Serializable {
 	
-	private int Leave_Record_ID;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	private int Leave_Record_ID;//id（主键）
 	private String Suspect_ID;//档案编号
 	private Date TempLeave_Time;//临时离开时间
 	private String TempLeave_Reason;//临时离开原因
@@ -24,8 +30,8 @@ public class PHCSMP_Leave_Record implements Serializable {
 	private String Recipient_Person;//领取人姓名
 	private String Recipient_Person_Number;//领取人身份证号码
 	private Date Treatment_Time;//随身物品处理时间
-	private String Staff_ID;//办案民警
-	private String Room_ID;//信息登记房间
+	private int Staff_ID;//办案民警
+	private int Room_ID;//信息登记房间
 	
 	private int total_record = 60;//需要填写的总记录数
 	private int fill_record;//当前填写的记录数
@@ -97,18 +103,6 @@ public class PHCSMP_Leave_Record implements Serializable {
 	public void setTreatment_Time(Date treatment_Time) {
 		Treatment_Time = treatment_Time;
 	}
-	public String getStaff_ID() {
-		return Staff_ID;
-	}
-	public void setStaff_ID(String staff_ID) {
-		Staff_ID = staff_ID;
-	}
-	public String getRoom_ID() {
-		return Room_ID;
-	}
-	public void setRoom_ID(String room_ID) {
-		Room_ID = room_ID;
-	}
 	public int getLeave_Record_ID() {
 		return Leave_Record_ID;
 	}
@@ -126,5 +120,17 @@ public class PHCSMP_Leave_Record implements Serializable {
 	}
 	public void setFill_record(int fill_record) {
 		this.fill_record = fill_record;
+	}
+	public int getStaff_ID() {
+		return Staff_ID;
+	}
+	public void setStaff_ID(int staff_ID) {
+		Staff_ID = staff_ID;
+	}
+	public int getRoom_ID() {
+		return Room_ID;
+	}
+	public void setRoom_ID(int room_ID) {
+		Room_ID = room_ID;
 	}
 }

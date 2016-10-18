@@ -16,6 +16,7 @@ public class PHCSMP_Information_Collection implements Serializable {
 	private String Collected_Item;//采集项目（采集项目字典表中ID逗号隔开，只有Is_Collected为真时有效）
 	private String Is_Storaged;//是否入库
 	private String Is_Checked;//是否检查对比
+	
 	private int Staff_ID;//办案民警
 	private int Room_ID;//信息登记房间
 	
