@@ -42,7 +42,7 @@
 <div class="title">嫌疑人信息管理表</div>
 
 	<div class="search">
-		<form action="${pageContext.request.contextPath }/suspectManage_searchsuspectInfor.action" method="post">
+		<form action="<%-- ${pageContext.request.contextPath }/suspectManage_searchsuspectInfor.action --%>" method="post">
 	        <input type="text" class="ipt" name="ss" maxlength="100" autocomplete="off">
 	        <input type="submit" value="搜索" class="sbtn">
         </form>
